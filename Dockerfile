@@ -10,13 +10,10 @@ FROM python:3.8-slim-bullseye
 WORKDIR /root
 
 # install requrired packages
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git openssh-server
 
 RUN git clone https://github.com/tkgsn/priv_traj_gen.git
-RUN pip install -r priv_traj_gen/requirements.txt
-
-# Install OpenSSH
-RUN apt-get update && apt-get install -y openssh-server
+# RUN pip install -r priv_traj_gen/requirements.txt
 
 EXPOSE 22
 
@@ -29,7 +26,7 @@ COPY id_rsa.pub /root/.ssh/authorized_keys
 
 # move to priv_traj_gen directory and run prepare.sh
 WORKDIR /root/priv_traj_gen
-RUN ./prepare.sh
+# RUN ./prepare.sh
 
 # Run sshd
 CMD ["/usr/sbin/sshd", "-D"]
