@@ -9,6 +9,9 @@ FROM python:3.8-slim-bullseye
 # Set working directory
 WORKDIR /root
 
+# install requrired packages
+RUN apt-get update && apt-get install -y git
+
 RUN git clone https://github.com/tkgsn/priv_traj_gen.git
 RUN pip install -r priv_traj_gen/requirements.txt
 
