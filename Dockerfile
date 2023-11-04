@@ -4,7 +4,7 @@
 # This server evaluates the models and sends the results to the GPU server
 
 # Base image
-FROM python3.8:slim-bullseye
+FROM python:3.8-slim-bullseye
 
 # Set working directory
 WORKDIR /root
