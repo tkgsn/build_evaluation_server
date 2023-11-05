@@ -24,6 +24,12 @@ RUN mkdir /var/run/sshd
 RUN mkdir /root/.ssh
 COPY id_rsa.pub /root/.ssh/authorized_keys
 
+# copy required files
+COPY requirements.txt /root/requirements.txt
+
+# install required packages
+RUN pip install -r requirements.txt
+
 # move to priv_traj_gen directory and run prepare.sh
 WORKDIR /root/priv_traj_gen
 # RUN ./prepare.sh
